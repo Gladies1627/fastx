@@ -1,0 +1,121 @@
+.bus-search-form {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30px;
+  animation: slideDown 0.8s ease-in-out;
+}
+
+.bus-search-form .form-control {
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #6f71ec;
+  transition: border 0.3s ease;
+}
+
+.bus-search-form .form-control:focus {
+  border-color: #a196cb;
+  box-shadow: 0 0 5px rgba(255, 138, 138, 0.5);
+}
+
+.bus-search-form button {
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.bus-search-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Transparent glass-like table */
+.bus-search-table {
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 1s ease;
+}
+
+.bus-search-table th,
+.bus-search-table td {
+  vertical-align: middle;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+
+}
+
+.bus-search-table .btn {
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.bus-search-table .btn:hover {
+  background-color: #28a745;
+}
+
+/* Optional animation classes */
+.search-form {
+  animation: slideDown 0.8s ease-in-out;
+}
+.route-filter-input {
+  border-radius: 8px;
+  border: 1px solid #888;
+  padding: 6px 12px;
+  font-size: 0.95rem;
+}
+.no-routes-message {
+  color: #bb2124;
+  background: #ffe6e6;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+.routes-table {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* No buses found message */
+.no-routes-message {
+  color: #eee9e9;
+  background-color: rgba(255, 0, 0, 0.8);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeIn 1s ease;
+  margin-top: 20px;
+}
