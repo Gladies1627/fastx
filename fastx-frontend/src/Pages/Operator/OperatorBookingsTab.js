@@ -10,7 +10,7 @@ const OperatorBookings = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await fetch("http://localhost:8080/api/operator/bookings", {
+        const res = await fetch("https://fastx-backend-ilxf.onrender.com/api/operator/bookings", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
