@@ -18,7 +18,7 @@ function Cancellations() {
     }
 
     try {
-      const res = await fetch(`http://localhost:8080/api/passenger/cancellations`, {
+      const res = await fetch(`https://fastx-backend-ilxf.onrender.com/api/passenger/cancellations`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
