@@ -28,7 +28,7 @@ const OperatorRoutesTab = () => {
 
   const fetchRoutes = useCallback(async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/operator/routes", {
+      const response = await fetch("https://fastx-backend-ilxf.onrender.com/api/operator/routes", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -58,8 +58,8 @@ const OperatorRoutesTab = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = editMode
-      ? `http://localhost:8080/api/operator/update/${editingRouteId}`
-      : `http://localhost:8080/api/operator/add-route`;
+      ? `https://fastx-backend-ilxf.onrender.com/api/operator/update/${editingRouteId}`
+      : `https://fastx-backend-ilxf.onrender.com/api/operator/add-route`;
 
     const method = editMode ? "PUT" : "POST";
 
@@ -107,7 +107,7 @@ const OperatorRoutesTab = () => {
   const handleDelete = async (routeId) => {
     if (!window.confirm("Are you sure you want to delete this route?")) return;
     try {
-      await fetch(`http://localhost:8080/api/operator/delete/${routeId}`, {
+      await fetch(`https://fastx-backend-ilxf.onrender.com/api/operator/delete/${routeId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
