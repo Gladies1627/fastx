@@ -15,11 +15,14 @@ function AdminDashboard() {
 
   const fetchDashboardData = async () => {
     try {
-      const res = await fetch("http://localhost:8080/api/admin/dashboard", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await fetch(
+        "https://fastx-backend-ilxf.onrender.com/api/admin/dashboard",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await res.json();
       setDashboardData(data);
@@ -67,12 +70,21 @@ function AdminDashboard() {
 
         <div className="tab-content">
           {activeTab === "users" && (
-            <AdminUsersTab users={dashboardData.users} fetchUsers={fetchDashboardData} />
+            <AdminUsersTab
+              users={dashboardData.users}
+              fetchUsers={fetchDashboardData}
+            />
           )}
-          {activeTab === "routes" && <AdminRoutesTab busRoutes={dashboardData.busRoutes} />}
-          {activeTab === "bookings" && <AdminBookingsTab bookings={dashboardData.bookings || []} />}
+          {activeTab === "routes" && (
+            <AdminRoutesTab busRoutes={dashboardData.busRoutes} />
+          )}
+          {activeTab === "bookings" && (
+            <AdminBookingsTab bookings={dashboardData.bookings || []} />
+          )}
           {activeTab === "cancellations" && (
-            <AdminCancellationsTab cancellations={dashboardData.cancellations || []} />
+            <AdminCancellationsTab
+              cancellations={dashboardData.cancellations || []}
+            />
           )}
         </div>
       </div>
