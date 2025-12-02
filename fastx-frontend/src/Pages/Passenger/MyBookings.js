@@ -10,25 +10,24 @@ const MyBookings = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
- const filteredBookings = bookings.filter((booking) => {
-  const searchLower = searchTerm.toLowerCase();
-  const normalizedStatus = booking.status.toLowerCase() === "confirmed" ? "valid" : booking.status.toLowerCase();
+  const filteredBookings = bookings.filter((booking) => {
+    const searchLower = searchTerm.toLowerCase();
+    const normalizedStatus = booking.status.toLowerCase() === "confirmed" ? "valid" : booking.status.toLowerCase();
 
-  return (
-    booking.id.toString().includes(searchLower) ||
-    normalizedStatus.includes(searchLower) ||
-    booking.seats.some(seat => seat.seatNumber.toLowerCase().includes(searchLower)) ||
-    booking.route?.origin?.toLowerCase().includes(searchLower) ||
-    booking.route?.destination?.toLowerCase().includes(searchLower) ||
-    new Date(booking.travelDate).toLocaleDateString("en-IN").includes(searchLower)
-  );
-});
-
+    return (
+      booking.id.toString().includes(searchLower) ||
+      normalizedStatus.includes(searchLower) ||
+      booking.seats.some(seat => seat.seatNumber.toLowerCase().includes(searchLower)) ||
+      booking.route?.origin?.toLowerCase().includes(searchLower) ||
+      booking.route?.destination?.toLowerCase().includes(searchLower) ||
+      new Date(booking.travelDate).toLocaleDateString("en-IN").includes(searchLower)
+    );
+  });
 
   const fetchBookings = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/passenger/all-bookings/${userId}`,
+        `https://fastx-backend-ilxf.onrender.com/api/passenger/all-bookings/${userId}`,
         {
           headers: { Authorization: token },
         }
@@ -54,7 +53,7 @@ const MyBookings = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/passenger/cancel-booking/${bookingId}`,
+        `https://fastx-backend-ilxf.onrender.com/api/passenger/cancel-booking/${bookingId}`,
         {
           method: "PUT",
           headers: {
@@ -77,7 +76,7 @@ const MyBookings = () => {
   const handleDownload = async (bookingId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/passenger/ticket/${bookingId}`,
+        `https://fastx-backend-ilxf.onrender.com/api/passenger/ticket/${bookingId}`,
         {
           headers: { Authorization: token },
         }
