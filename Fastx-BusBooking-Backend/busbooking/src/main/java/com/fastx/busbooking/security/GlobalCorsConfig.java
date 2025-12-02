@@ -14,10 +14,13 @@ public class GlobalCorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true); 
-        config.setAllowedOrigins(List.of("http://localhost:3000")); 
+        config.setAllowCredentials(true);
+        config.setAllowedOrigins(List.of(
+                "https://fastx-frontend.onrender.com",
+                "http://localhost:3000"
+        ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*")); 
+        config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("Authorization"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -25,4 +28,3 @@ public class GlobalCorsConfig {
         return new CorsFilter(source);
     }
 }
-
