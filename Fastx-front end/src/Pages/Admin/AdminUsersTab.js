@@ -6,6 +6,8 @@ function AdminUsersTab({ users, fetchUsers }) {
   const { token } = useContext(AuthContext);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const BASE_URL = "https://fastx-backend-ilxf.onrender.com/api/admin";
+
   const handleDeleteUser = async (userId, role) => {
     if (role === "ADMIN") {
       alert("❌ Cannot delete Admin users.");
@@ -16,7 +18,7 @@ function AdminUsersTab({ users, fetchUsers }) {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/api/admin/user/${userId}`, {
+      const response = await fetch(`${BASE_URL}/user/${userId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`
