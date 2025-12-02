@@ -16,7 +16,7 @@ function AdminUsersTab({ users, fetchUsers }) {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/api/admin/user/${userId}`, {
+      const response = await fetch(`https://fastx-backend-ilxf.onrender.com/api/admin/user/${userId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`
