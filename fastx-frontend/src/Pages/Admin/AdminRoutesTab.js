@@ -11,7 +11,7 @@ function AdminRoutesTab({ busRoutes }) {
 
   const fetchRoutes = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/admin/dashboard", {
+      const res = await axios.get("https://fastx-backend-ilxf.onrender.com/api/admin/dashboard", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRoutes(res.data.busRoutes);
@@ -23,7 +23,7 @@ function AdminRoutesTab({ busRoutes }) {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this route?")) {
       try {
-        await axios.delete(`http://localhost:8080/api/admin/route/${id}`, {
+        await axios.delete(`https://fastx-backend-ilxf.onrender.com/api/admin/route/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         await fetchRoutes();
@@ -36,7 +36,7 @@ function AdminRoutesTab({ busRoutes }) {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8080/api/admin/route", editingRoute, {
+      await axios.put("https://fastx-backend-ilxf.onrender.com/api/admin/route", editingRoute, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const updated = routes.map((r) =>
