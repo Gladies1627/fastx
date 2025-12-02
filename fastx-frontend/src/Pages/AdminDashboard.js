@@ -15,7 +15,7 @@ function AdminDashboard() {
 
   const fetchDashboardData = async () => {
     try {
-      const res = await fetch("http://localhost:8080/api/admin/dashboard", {
+      const res = await fetch("https://fastx-backend-ilxf.onrender.com/api/admin/dashboard", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
