@@ -16,7 +16,7 @@ function SearchBuses() {
 
     try {
       const res = await fetch(
-        `http://localhost:8080/api/passenger/search?origin=${origin}&destination=${destination}`,
+        `https://fastx-backend-ilxf.onrender.com/api/passenger/search?origin=${origin}&destination=${destination}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -96,7 +96,6 @@ function SearchBuses() {
         </div>
       </form>
 
-    
       {searched && routes.length === 0 && (
         <div className="no-routes-message">
           No buses available for this route.
