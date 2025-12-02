@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
-import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 function AdminRoutesTab({ busRoutes }) {
@@ -9,9 +8,11 @@ function AdminRoutesTab({ busRoutes }) {
   const [searchTerm, setSearchTerm] = useState("");
   const { token } = useContext(AuthContext);
 
+  const BASE_URL = "https://fastx-backend-ilxf.onrender.com/api/admin";
+
   const fetchRoutes = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/admin/dashboard", {
+      const res = await axios.get(`${BASE_URL}/dashboard`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRoutes(res.data.busRoutes);
@@ -23,7 +24,7 @@ function AdminRoutesTab({ busRoutes }) {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this route?")) {
       try {
-        await axios.delete(`http://localhost:8080/api/admin/route/${id}`, {
+        await axios.delete(`${BASE_URL}/route/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         await fetchRoutes();
@@ -36,7 +37,7 @@ function AdminRoutesTab({ busRoutes }) {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8080/api/admin/route", editingRoute, {
+      await axios.put(`${BASE_URL}/route`, editingRoute, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const updated = routes.map((r) =>
