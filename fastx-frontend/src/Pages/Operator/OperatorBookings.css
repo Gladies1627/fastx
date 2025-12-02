@@ -1,0 +1,89 @@
+.operator-bookings-container {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 30px;
+  color: #ffffff !important;
+  animation: fadeIn 0.6s ease-in;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.operator-bookings-container h3 {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.search-box input {
+  background-color: rgba(244, 236, 236, 0.942);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+}
+
+/* 🖤 Table Styling */
+.operator-bookings-container table {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 16px;
+  width: 100%;
+  font-size: 0.85rem;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-collapse: collapse;
+}
+
+.operator-bookings-container thead {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.operator-bookings-container th,
+.operator-bookings-container td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+.operator-bookings-container th {
+  font-weight: 600;
+  text-align: left;
+}
+
+.operator-bookings-container tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  transition: background-color 0.3s ease;
+}
+
+.operator-bookings-container .badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.badge.bg-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* 📱 Responsive Seat Column */
+.operator-bookings-container td:nth-child(6) {
+  max-width: 180px;
+  word-wrap: break-word;
+}
+
+/* ✨ Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,71 @@
+.passenger-page {
+  background-image: url('../assets/passenger.png');
+  background-size: cover;
+  background-position: center -200px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.passenger-dashboard {
+  margin-top: 100px;
+  flex: 1;
+}
+.container {
+  background: transparent !important;
+}
+.welcome-text {
+    text-align: center;
+  color: #090909;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #262424;
+  }
+  to {
+    text-shadow: 0 0 15px #6b6767, 0 0 20px #f4eded;
+  }
+}
+
+
+
+.tab-content > * {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.nav-tabs .nav-link {
+  background-color: #f8f2f2;
+  border: none;
+  margin-right: 10px;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #ff8a8a;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(255, 100, 100, 0.3);
+}

@@ -1,0 +1,128 @@
+/* ===== LAYOUT SHARED STYLES ===== */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  background: transparent !important;
+}
+
+/* ===== Layout Header (Logo + Title Wrapper) ===== */
+.layout-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 20px;
+  z-index: 100;
+  pointer-events: none; /* Prevent it from blocking clicks */
+}
+
+/* ===== Logo & Title ===== */
+.logo {
+  animation: slideFadeIn 1s ease-out forwards;
+  width: 130px;
+  height: 80px;
+  background-image: url('../assets/logo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: auto;
+}
+
+.app-title {
+  animation: slideFadeIn 1.2s ease-out forwards;
+  font-size: 1.5rem;
+  font-family: 'Pacifico', cursive;
+  color: #eaeae4;
+  margin-left: -15px;
+  margin-top: 50px;
+  line-height: 1;
+  pointer-events: auto;
+}
+
+/* ===== Footer Content ===== */
+.home-footer {
+  position: relative;
+  width: 100%;
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25); /* Transparent overlay */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  animation: fadeIn 1s ease;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+  font-size: 1.05rem;
+  color: #f2f2f2;
+}
+
+.footer-section {
+    text-align: center;
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+
+.footer-section h5 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #131212;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li a,
+.footer-section p,
+.footer-section a {
+  color: #0c0c0c;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover,
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Animations ===== */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
