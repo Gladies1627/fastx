@@ -7,10 +7,12 @@ const OperatorBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const BASE_URL = "https://fastx-backend-ilxf.onrender.com/api/operator";
+
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await fetch("http://localhost:8080/api/operator/bookings", {
+        const res = await fetch(`${BASE_URL}/bookings`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
