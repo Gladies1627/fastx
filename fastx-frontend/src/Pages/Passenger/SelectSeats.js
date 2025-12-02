@@ -16,7 +16,7 @@ function SelectSeats() {
   useEffect(() => {
     const fetchSeats = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/passenger/seats/${routeId}`, {
+        const res = await fetch(`https://fastx-backend-ilxf.onrender.com/api/passenger/seats/${routeId}`, {
           headers: {
             Authorization: `Bearer ${token} `,
           },
@@ -59,7 +59,7 @@ function SelectSeats() {
       });
       selectedSeatIds.forEach((id) => queryParams.append("seatIds", id));
 
-      const res = await fetch(`http://localhost:8080/api/passenger/book?${queryParams.toString()}`, {
+      const res = await fetch(`https://fastx-backend-ilxf.onrender.com/api/passenger/book?${queryParams.toString()}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -83,124 +83,118 @@ function SelectSeats() {
     <div className="select-seat-page">
       <h2 className="seat-title">Select Your Seats</h2>
 
-
-   
-<div className="seat-legend-container">
-  <div className="legend-item">
-    <span className="legend-box legend-available" /> Available
-  </div>
-  <div className="legend-item">
-    <span className="legend-box legend-booked-male" /> Booked (Male)
-  </div>
-  <div className="legend-item">
-    <span className="legend-box legend-booked-female" /> Booked (Female)
-  </div>
-  <div className="legend-item">
-    <span className="legend-box legend-selected" /> Your Selection
-  </div>
-</div>
-
-
-<div className="seat-grid mt-4">
-  {Array.from({ length: Math.ceil(seats.length / 4) }, (_, rowIdx) => {
-    const rowSeats = seats.slice(rowIdx * 4, rowIdx * 4 + 4);
-
-    const leftSide = rowSeats.slice(0, 2);
-    const rightSide = rowSeats.slice(2, 4);
-
-    return (
-      <div key={rowIdx} className="seat-row">
-        <div className="seat-side">
-          {leftSide.map((seat) => {
-            const isBooked = seat.booked;
-            const isSelected = selectedSeatIds.includes(seat.id);
-            let seatClass = "seat";
-            if (isBooked) {
-              seatClass += " booked";
-              if (seat.bookedByGender === "FEMALE") seatClass += " female-seat";
-              else if (seat.bookedByGender === "MALE") seatClass += " male-seat";
-            } else if (isSelected) {
-              seatClass += " selected";
-            }
-            return (
-              <div
-                key={seat.id}
-                className={seatClass}
-                onClick={() => !isBooked && toggleSeat(seat.id)}
-                title={
-                  isBooked
-                    ? `Booked (${seat.bookedByGender})`
-                    : "Click to select"
-                }
-              >
-                {seat.seatNumber}
-              </div>
-            );
-          })}
+      <div className="seat-legend-container">
+        <div className="legend-item">
+          <span className="legend-box legend-available" /> Available
         </div>
-
-        <div className="aisle-space" />
-
-        <div className="seat-side">
-          {rightSide.map((seat) => {
-            const isBooked = seat.booked;
-            const isSelected = selectedSeatIds.includes(seat.id);
-            let seatClass = "seat";
-            if (isBooked) {
-              seatClass += " booked";
-              if (seat.bookedByGender === "FEMALE") seatClass += " female-seat";
-              else if (seat.bookedByGender === "MALE") seatClass += " male-seat";
-            } else if (isSelected) {
-              seatClass += " selected";
-            }
-            return (
-              <div
-                key={seat.id}
-                className={seatClass}
-                onClick={() => !isBooked && toggleSeat(seat.id)}
-                title={
-                  isBooked
-                    ? `Booked (${seat.bookedByGender})`
-                    : "Click to select"
-                }
-              >
-                {seat.seatNumber}
-              </div>
-            );
-          })}
+        <div className="legend-item">
+          <span className="legend-box legend-booked-male" /> Booked (Male)
+        </div>
+        <div className="legend-item">
+          <span className="legend-box legend-booked-female" /> Booked (Female)
+        </div>
+        <div className="legend-item">
+          <span className="legend-box legend-selected" /> Your Selection
         </div>
       </div>
-    );
-  })}
-</div>
 
-  
+      <div className="seat-grid mt-4">
+        {Array.from({ length: Math.ceil(seats.length / 4) }, (_, rowIdx) => {
+          const rowSeats = seats.slice(rowIdx * 4, rowIdx * 4 + 4);
 
-    <div className="payment-section mt-4">
-  <label className="form-label"><strong>Payment Mode:</strong></label>
-  <select
-    className="form-select mb-3"
-    value={paymentMode}
-    onChange={(e) => setPaymentMode(e.target.value)}
-    required
-  >
-    <option value="">-- Select Payment Method --</option>
-    <option value="UPI">UPI</option>
-    <option value="CREDIT_CARD">Credit Card</option>
-    <option value="DEBIT_CARD">Debit Card</option>
-    <option value="NET_BANKING">Net Banking</option>
-  </select>
+          const leftSide = rowSeats.slice(0, 2);
+          const rightSide = rowSeats.slice(2, 4);
 
-  <div className="button-group">
-    <button className="btn btn-success me-3" onClick={handleBooking}>
-      Confirm Booking
-    </button>
-    <button className="btn btn-secondary" onClick={() => navigate("/passenger")}>
-      Cancel
-    </button>
-  </div>
-</div>
+          return (
+            <div key={rowIdx} className="seat-row">
+              <div className="seat-side">
+                {leftSide.map((seat) => {
+                  const isBooked = seat.booked;
+                  const isSelected = selectedSeatIds.includes(seat.id);
+                  let seatClass = "seat";
+                  if (isBooked) {
+                    seatClass += " booked";
+                    if (seat.bookedByGender === "FEMALE") seatClass += " female-seat";
+                    else if (seat.bookedByGender === "MALE") seatClass += " male-seat";
+                  } else if (isSelected) {
+                    seatClass += " selected";
+                  }
+                  return (
+                    <div
+                      key={seat.id}
+                      className={seatClass}
+                      onClick={() => !isBooked && toggleSeat(seat.id)}
+                      title={
+                        isBooked
+                          ? `Booked (${seat.bookedByGender})`
+                          : "Click to select"
+                      }
+                    >
+                      {seat.seatNumber}
+                    </div>
+                  );
+                })}
+              </div>
 
+              <div className="aisle-space" />
+
+              <div className="seat-side">
+                {rightSide.map((seat) => {
+                  const isBooked = seat.booked;
+                  const isSelected = selectedSeatIds.includes(seat.id);
+                  let seatClass = "seat";
+                  if (isBooked) {
+                    seatClass += " booked";
+                    if (seat.bookedByGender === "FEMALE") seatClass += " female-seat";
+                    else if (seat.bookedByGender === "MALE") seatClass += " male-seat";
+                  } else if (isSelected) {
+                    seatClass += " selected";
+                  }
+                  return (
+                    <div
+                      key={seat.id}
+                      className={seatClass}
+                      onClick={() => !isBooked && toggleSeat(seat.id)}
+                      title={
+                        isBooked
+                          ? `Booked (${seat.bookedByGender})`
+                          : "Click to select"
+                      }
+                    >
+                      {seat.seatNumber}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="payment-section mt-4">
+        <label className="form-label"><strong>Payment Mode:</strong></label>
+        <select
+          className="form-select mb-3"
+          value={paymentMode}
+          onChange={(e) => setPaymentMode(e.target.value)}
+          required
+        >
+          <option value="">-- Select Payment Method --</option>
+          <option value="UPI">UPI</option>
+          <option value="CREDIT_CARD">Credit Card</option>
+          <option value="DEBIT_CARD">Debit Card</option>
+          <option value="NET_BANKING">Net Banking</option>
+        </select>
+
+        <div className="button-group">
+          <button className="btn btn-success me-3" onClick={handleBooking}>
+            Confirm Booking
+          </button>
+          <button className="btn btn-secondary" onClick={() => navigate("/passenger")}>
+            Cancel
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
